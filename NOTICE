@@ -1,0 +1,19 @@
+AmazingHand Studio
+Copyright 2026 AmazingHand Studio contributors
+
+Developed by Immanuel Jose Valencia, Jeremy Laville, Ryan Rhay Vicerra,
+and Aaron Raymond See.
+
+Studio code is licensed under the Apache License, Version 2.0.
+
+This project includes unmodified AmazingHand models and meshes from
+Pollen Robotics and the AmazingHand contributors:
+https://github.com/pollen-robotics/AmazingHand
+
+The upstream project declares Apache 2.0. Its mechanical design and bundled
+hand meshes retain their Creative Commons Attribution 4.0 International terms:
+https://creativecommons.org/licenses/by/4.0/
+
+The upstream MuJoCo/Mink demonstration is credited to Steve N'Guyen.
+See assets/mujoco/README.md and assets/mujoco/LICENSE-Apache-2.0.txt.
+Third-party packages retain their respective licenses.

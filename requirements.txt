@@ -1,0 +1,13 @@
+# Full Studio app and report tools. Python 3.11; Windows x64 / Ubuntu x86_64.
+# Direct dependencies pinned to the working environment; platform dependencies resolve per OS.
+numpy==2.4.3
+pyserial==3.5
+rustypot==1.7.0
+PyQt5==5.15.11
+mujoco==3.12.0
+mink==1.3.0
+qpsolvers[daqp,quadprog]==4.13.0
+scipy==1.17.1
+requests==2.33.1
+Pillow==12.1.1
+matplotlib==3.10.9

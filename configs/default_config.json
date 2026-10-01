@@ -1,0 +1,72 @@
+{
+  "name": "AmazingHand default",
+  "serial": {
+    "port": "COM10",
+    "baudrate": 1000000,
+    "timeout": 0.5
+  },
+  "side": "right",
+  "demo": {
+    "max_speed": 7,
+    "close_speed": 3
+  },
+  "fingers": {
+    "index": {
+      "servos": [
+        1,
+        2
+      ],
+      "middle": [
+        3.0,
+        0.0
+      ],
+      "sim_signs": [
+        1.0,
+        1.0
+      ]
+    },
+    "middle": {
+      "servos": [
+        3,
+        4
+      ],
+      "middle": [
+        -5.0,
+        -8.0
+      ],
+      "sim_signs": [
+        1.0,
+        1.0
+      ]
+    },
+    "ring": {
+      "servos": [
+        5,
+        6
+      ],
+      "middle": [
+        -2.0,
+        5.0
+      ],
+      "sim_signs": [
+        1.0,
+        1.0
+      ]
+    },
+    "thumb": {
+      "servos": [
+        7,
+        8
+      ],
+      "middle": [
+        -12.0,
+        0.0
+      ],
+      "sim_signs": [
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "poses": {}
+}

@@ -1,0 +1,42 @@
+# Private experiment app, generated results, and manuscript library
+/experiments/
+/publications/
+# Obsolete voice files pending manual deletion
+/voice_hand/
+
+# Existing local research outputs
+/data/
+/out/
+/output/
+
+# Local secrets, environments, downloaded models, and logs
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+*.log
+MUJOCO_LOG.TXT
+
+# Python and tool caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+tmp/
+
+# Local regression tests
+/tests/
+
+# Python package build metadata
+*.egg-info/
+build/
+dist/
+
+# Machine-specific settings, calibration trials, and private study configuration
+/configs/*.json
+!/configs/left_config.json
+!/configs/default_config.json
+/configs/experiments/
+*.tmp

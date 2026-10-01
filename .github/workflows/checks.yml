@@ -1,0 +1,31 @@
+name: Windows and Ubuntu checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  smoke:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-22.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+      - name: Install dependencies
+        run: |
+          python -m pip install -r requirements.txt
+          python -m pip install --no-deps -e .
+          python -m pip check
+      - name: Compile Python
+        run: python -m compileall -q amazinghand main.py
+      - name: Import API and GUI
+        run: python -c "from amazinghand import AmazingHand; from amazinghand.qt_app import Studio; print('Imports OK')"
+      - name: Load both bundled models
+        run: python -c "import mujoco; from pathlib import Path; models=[mujoco.MjModel.from_xml_path(str(p)) for p in Path('assets/mujoco').glob('*/mjcf/scene.xml')]; assert len(models)==2; print('Both models loaded')"

@@ -1,0 +1,10 @@
+# Portable Windows x64 / Ubuntu x86_64 environment; no local prefix or OS build strings.
+name: amazinghand-studio
+channels:
+  - conda-forge
+  - nodefaults
+dependencies:
+  - python=3.11
+  - pip
+  - pip:
+      - -r requirements.txt
