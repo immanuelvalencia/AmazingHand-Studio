@@ -8,6 +8,10 @@ Pose editing · Gesture sequences · LLM control · MuJoCo preview · Python API
 
 ---
 
+![AmazingHand Studio pose controls and persistent hand preview](docs/images/pose-control.png)
+
+*AmazingHand Studio on Windows. Screenshots show disconnected preview mode; no physical hand was commanded during capture.*
+
 ## Overview
 
 AmazingHand Studio combines pose editing, gesture sequencing, language-based commands, and Python scripting in a PyQt5 desktop application. It controls the four-finger AmazingHand using configurable motor IDs and calibrated middle positions.
@@ -87,17 +91,7 @@ The editable install lets other projects import `amazinghand`. Reinstall if you 
 
 **Windows:** install the serial adapter's manufacturer driver if needed, then select its actual COM port in Settings.
 
-### Ubuntu prerequisites
-
-Install the Qt/OpenGL system libraries:
-
-~~~sh
-sudo apt update
-sudo apt install -y libgl1 libegl1 libglfw3 libdbus-1-3 libfontconfig1 libx11-xcb1 libxkbcommon-x11-0 libxcb-xinerama0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-render-util0 libxcb-xkb1 libxcb-shape0
-sudo usermod -aG dialout "$USER"
-~~~
-
-Log out and back in after changing serial permissions. Use the actual device path, such as `/dev/ttyUSB0`. On Wayland, try `QT_QPA_PLATFORM=xcb python main.py` if Qt reports a platform-plugin error.
+**Ubuntu:** install the Qt/OpenGL system libraries and configure serial-port permissions before connecting hardware. See the [complete installation guide](docs/installation.md#ubuntu-prerequisites) for commands and Wayland troubleshooting.
 
 **Compatibility status:** dependency resolution and Conda dry runs passed for Windows x64 and Ubuntu x86_64. Windows UI/API checks passed. Ubuntu desktop rendering and physical hardware operation still require target-system validation. ARM and 32-bit systems are not covered by these exports.
 
@@ -128,6 +122,10 @@ Angles are motor offsets in degrees relative to calibrated middle positions, not
 ### Gesture sequences
 
 Add steps, select gestures or saved poses, set delays, and reorder them with **Move up** and **Move down**. Enable **Loop sequence** to repeat until stopped.
+
+![Gesture sequence editor with Open, Point, and Victory steps](docs/images/gesture-sequence.png)
+
+*Example sequence with one-second delays and looping enabled. Delays begin after commands are sent; they do not confirm physical arrival at the target.*
 
 ### LLM Control
 
@@ -175,11 +173,19 @@ hand.move_finger("index", -20, 20)
 print("Saved poses:", list(hand.saved_poses))
 ~~~
 
+![Python editor with syntax highlighting, preview, and script output](docs/images/python-editor.png)
+
+*The editor example executed in disconnected preview mode.*
+
 **Stop code**, Escape, and Disconnect request cancellation. Use `hand.wait()` for cancellable delays. Blocking native calls must return before cancellation completes. Scripts are trusted local Python with normal file and network access. Do not open a second controller or start background control threads inside Studio.
 
 ### Hand preview
 
 Choose **3D model**, **Kinematics**, or **Both**. Drag to orbit, scroll to zoom, and resize or float the dock. Both views follow the same commanded pose and the hand side selected in Settings.
+
+![Separate 3D and kinematics views of the commanded pose](docs/images/dual-preview.png)
+
+*The preview shows commanded positions, not measured contact, force, or physical motion accuracy.*
 
 ---
 
@@ -249,7 +255,8 @@ amazinghand-studio/
 │   ├── hardware_example.py    # Standalone developer example
 │   └── python_guide.md        # API and scripting guide
 ├── assets/mujoco/             # Scenes, meshes, and notices
-└── configs/                   # Calibration profiles and settings
+├── configs/                   # Calibration profiles and settings
+└── docs/                      # Installation guide and screenshots
 ~~~
 
 Bundled scenes include their required meshes; no sibling AmazingHand checkout is needed. Local `experiments/`, `publications/`, and `tests/` folders are excluded by `.gitignore` and are not part of the public distribution.
